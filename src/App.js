@@ -2,7 +2,9 @@ import React, { Component } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import Header from "./components/Header.js";
-import User from "./components/User";
+// import User from "./components/User";
+// import { listItems, MoviesList } from "./components/ListDemo";
+import DynamicMoviesList from "./components/dynamicListsDemo/DynamicMoviesList";
 
 class App extends Component {
   state = {
@@ -57,9 +59,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        {/* <Header></Header> */}
-        <h1>Hello Ironhackers!</h1>
-        <p>Count is: {this.state.clickCount}</p>
+        {/* <Header /> */}
+        {/* <h1>Hello Ironhackers!</h1> */}
+        {/* <p>Count is: {this.state.clickCount}</p>
         <button onClick={this.clickHandler}>Click me</button>
         <User
           theColor={this.state.backColor}
@@ -71,7 +73,13 @@ class App extends Component {
           firstName={this.state.userB.firstName}
           lastName={this.state.userB.lastName}
           image={this.state.userB.avatarUrl}
-        />
+        /> */}
+        {/* <ul className="list-style">{listItems}</ul> */}
+        {/* <div>
+          <MoviesList />
+        </div> */}
+        <hr />
+        <DynamicMoviesList />
       </div>
     );
   }
