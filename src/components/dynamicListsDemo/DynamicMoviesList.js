@@ -6,44 +6,67 @@ class DynamicMoviesList extends Component {
     super();
     this.state = {
       movies: [
-        { title: "The Godfather", director: "Francis Coppola" },
-        { title: "Star Wars", director: "Rian Johnson" },
-        { title: "The Shawshank Redemption", director: "Frank Darabont" }
-        // {
-        //   title: "Harry Potter and the Philosopher's Stone",
-        //   director: "Chris Columbus"
-        // }
-      ]
+        {
+          title: "The Godfather",
+          director: "Francis Coppola",
+          hasOscars: true,
+          IMDbRating: 9.2,
+        },
+        {
+          title: "Star Wars",
+          director: "Rian Johnson",
+          hasOscars: true,
+          IMDbRating: 8.7,
+        },
+        {
+          title: "The Shawshank Redemption",
+          director: "Frank Darabont",
+          hasOscars: false,
+          IMDbRating: 9.3,
+        },
+      ],
+      showOscarAwarded: false,
     };
   }
 
-  deleteMovieHandler = movieIndex => {
-    const moviesCopy = [...this.state.movies];
+  toggleMovies = () => {
+    this.setState({ showOscarAwarded: !this.state.showOscarAwarded });
+  };
+
+  deleteMovieHandler = (movieIndex) => {
+    const moviesCopy = [...this.filteredMovies];
     moviesCopy.splice(movieIndex, 1);
     this.setState({
-      movies: moviesCopy
+      movies: moviesCopy,
     });
   };
 
-  addMovie = movieIndex => {
-    const moviesCopy = [...this.state.movies];
-    moviesCopy.push({
-      title: "Harry Potter and the Philosopher's Stone",
-      director: "Chris Columbus"
-    });
-    this.setState({
-      movies: moviesCopy
-    });
-  };
+  filteredMovies;
+
+  // addMovie = (movieIndex) => {
+  //   const moviesCopy = [...this.state.movies];
+  //   moviesCopy.push({
+  //     title: "Harry Potter and the Philosopher's Stone",
+  //     director: "Chris Columbus",
+  //   });
+  //   this.setState({
+  //     movies: moviesCopy,
+  //   });
+  // };
 
   render() {
     console.log(this.state.movies);
+
+    const { showOscarAwarded } = this.state;
+
+    this.filteredMovies = this.state.movies.filter(
+      (theMovie) => theMovie.hasOscars == showOscarAwarded
+    );
+
     return (
       <div>
-        <div>
-          <button onClick={this.addMovie}>Add Harry Potter movie</button>
-        </div>
-        {this.state.movies.map((oneMovie, index) => {
+        {this.filteredMovies.map((oneMovie, index) => {
+          // return <ImprovedCard key={index} {...oneMovie} clickToDelete={this.deleteMovieHandler.bind(this, index)} />
           return (
             <ImprovedCard
               key={index}
@@ -52,6 +75,9 @@ class DynamicMoviesList extends Component {
             />
           );
         })}
+        <button onClick={() => this.toggleMovies()}>
+          {showOscarAwarded ? "Hide Oscar Awarded" : "Show Oscar Awarded"}
+        </button>
       </div>
     );
   }
