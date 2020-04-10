@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import ImprovedCard from "./ImprovedCard";
+import AddMovie from "./AddMovie";
 
 class DynamicMoviesList extends Component {
   constructor() {
@@ -54,17 +55,26 @@ class DynamicMoviesList extends Component {
   //   });
   // };
 
+  addMovieHandler = (theMovie) => {
+    const moviesCopy = [...this.state.movies];
+    moviesCopy.push(theMovie);
+    this.setState({
+      movies: moviesCopy,
+    });
+  };
+
   render() {
     console.log(this.state.movies);
 
     const { showOscarAwarded } = this.state;
 
     this.filteredMovies = this.state.movies.filter(
-      (theMovie) => theMovie.hasOscars == showOscarAwarded
+      (theMovie) => theMovie.hasOscars === showOscarAwarded
     );
 
     return (
       <div>
+        <AddMovie addTheMovie={this.addMovieHandler} />
         {this.filteredMovies.map((oneMovie, index) => {
           // return <ImprovedCard key={index} {...oneMovie} clickToDelete={this.deleteMovieHandler.bind(this, index)} />
           return (

@@ -5,6 +5,7 @@ import Header from "./components/Header.js";
 // import User from "./components/User";
 // import { listItems, MoviesList } from "./components/ListDemo";
 import DynamicMoviesList from "./components/dynamicListsDemo/DynamicMoviesList";
+import TextareaAndSelectTagDemo from "./components/dynamicListsDemo/TextareaAndSelectTagDemo";
 
 class App extends Component {
   state = {
@@ -12,16 +13,16 @@ class App extends Component {
       firstName: "Harper",
       lastName: "Perez",
       avatarUrl:
-        "https://www.refreshmiami.com/wp-content/uploads/2018/07/55085_logo-ironhack.png"
+        "https://www.refreshmiami.com/wp-content/uploads/2018/07/55085_logo-ironhack.png",
     },
     userB: {
       firstName: "Ana",
       lastName: "Hello",
       avatarUrl:
-        "https://s3.amazonaws.com/owler-image/logo/ironhack_owler_20180828_221413_original.png"
+        "https://s3.amazonaws.com/owler-image/logo/ironhack_owler_20180828_221413_original.png",
     },
     clickCount: 0,
-    backColor: "yellow"
+    backColor: "yellow",
   };
 
   colorMapper = () => {
@@ -34,7 +35,7 @@ class App extends Component {
     if (newCount !== 5) {
       this.setState({
         clickCount: newCount,
-        backColor: this.colorMapper()
+        backColor: this.colorMapper(),
       });
     } else {
       this.setState({
@@ -44,14 +45,14 @@ class App extends Component {
           firstName: "Jon",
           lastName: "Doe",
           avatarUrl:
-            "https://www.refreshmiami.com/wp-content/uploads/2018/07/55085_logo-ironhack.png"
+            "https://www.refreshmiami.com/wp-content/uploads/2018/07/55085_logo-ironhack.png",
         },
         userB: {
           firstName: "Susanne",
           lastName: "Smith",
           avatarUrl:
-            "https://s3.amazonaws.com/owler-image/logo/ironhack_owler_20180828_221413_original.png"
-        }
+            "https://s3.amazonaws.com/owler-image/logo/ironhack_owler_20180828_221413_original.png",
+        },
       });
     }
   };
@@ -80,6 +81,7 @@ class App extends Component {
         </div> */}
         <hr />
         <DynamicMoviesList />
+        <TextareaAndSelectTagDemo />
       </div>
     );
   }
