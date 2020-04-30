@@ -6,7 +6,7 @@ const numbers = [1, 2, 3, 4, 5, 6];
 const movies = [
   { title: "Jurassic Park", director: "Steven Spielberg" },
   { title: "Sharknado", director: "Anthony C. Ferrante" },
-  { title: "Titanic", director: "James Cameron" }
+  { title: "Titanic", director: "James Cameron" },
 ];
 
 // array of list item HTML elements that needs to be displayed
@@ -31,3 +31,5 @@ const movies = [
 //     </ul>
 //   );
 // };
+
+export default ListDemo;

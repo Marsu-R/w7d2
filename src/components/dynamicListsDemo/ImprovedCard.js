@@ -1,4 +1,5 @@
 import React from "react";
+
 const improvedCard = (props) => {
   let awardText;
   if (props.hasOscars) {
